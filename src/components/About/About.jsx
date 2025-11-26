@@ -1,83 +1,103 @@
-import React from 'react';
-import ReactTypingEffect from 'react-typing-effect';
-import Tilt from 'react-parallax-tilt';
-import profileImage from '../../assets/profile2.png';
+import React, { useState } from "react";
+import ReactTypingEffect from "react-typing-effect";
+import Tilt from "react-parallax-tilt";
+import profileImage from "../../assets/vivek-profile.png";
+import { RESUME_LINKS } from "../../constants";
 
 const About = () => {
+  const [showCvMenu, setShowCvMenu] = useState(false);
+
   return (
     <section
       id="about"
-      className="py-4 px-[7vw] md:px-[7vw] lg:px-[20vw] font-sans mt-16 md:mt-24 lg:mt-32"
+      className="min-h-[90vh] w-full px-[7vw] lg:px-[12vw] pt-24 pb-16 bg-gradient-to-b from-[#050516] to-[#05010d]"
     >
-      <div className="flex flex-col-reverse md:flex-row justify-between items-center">
-        {/* Left Side */}
-        <div className="md:w-1/2 text-center md:text-left mt-8 md:mt-0">
-          {/* Greeting */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 leading-tight">
+      <div className="flex flex-col-reverse gap-12 md:flex-row items-center justify-between">
+        {/* ================= Left text side ================= */}
+        <div className="w-full md:w-1/2 text-center md:text-left">
+          <p className="text-sm md:text-base text-purple-300 mb-2 tracking-[0.25em] uppercase">
             Hi, I am
-          </h1>
-          {/* Name */}
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
-            Tarun Kaushik
-          </h2>
-          {/* Skills Heading with Typing Effect */}
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 text-[#8245ec] leading-tight">
-            <span className="text-white">I am a </span>
-            <ReactTypingEffect
-              text={[
-                'Fullstack Developer',
-                'App Developer',
-                'UI/UX Designer',
-                'Coder',
-              ]}
-              speed={100}
-              eraseSpeed={50}
-              typingDelay={500}
-              eraseDelay={2000}
-              cursorRenderer={(cursor) => (
-                <span className="text-[#8245ec]">{cursor}</span>
-              )}
-            />
-          </h3>
-          {/* About Me Paragraph */}
-          <p className="text-base sm:text-lg md:text-lg text-gray-400 mb-10 mt-8 leading-relaxed">
-            I am a full-stack developer with over 2 years of experience in
-            building scalable web applications. Skilled in both front-end and
-            back-end development, I specialize in the MERN stack and other
-            modern technologies to create seamless user experiences and
-            efficient solutions.
           </p>
-          {/* Resume Button */}
-          <a
-            href="https://drive.google.com/file/d/1_pLl2wjYVCU-wnqXIhjhYr0YC0SJXvwv/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block text-white py-3 px-8 rounded-full mt-5 text-lg font-bold transition duration-300 transform hover:scale-105"
-            style={{
-              background: 'linear-gradient(90deg, #8245ec, #a855f7)',
-              boxShadow: '0 0 2px #8245ec, 0 0 2px #8245ec, 0 0 40px #8245ec',
-            }}
-          >
-            DOWNLOAD CV
-          </a>
-          
+
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+            Vivek <span className="text-purple-400">Mane</span>
+          </h1>
+
+          <h2 className="mt-4 text-xl md:text-2xl font-semibold text-slate-200">
+            I am a{" "}
+            <span className="text-purple-400">
+              <ReactTypingEffect
+                speed={80}
+                eraseSpeed={60}
+                eraseDelay={1500}
+                typingDelay={200}
+                text={[
+                  "Java Full-Stack Developer",
+                  "Data Analyst",
+                  "Data Scientist",
+                  "AI / ML Engineer",
+                  "Problem Solver",
+                ]}
+              />
+            </span>
+          </h2>
+
+          <p className="mt-6 text-sm md:text-base text-slate-300 leading-relaxed max-w-xl mx-auto md:mx-0">
+            I'm a final-year B.Tech CSE student at D.Y. Patil College of
+            Engineering, Kolhapur (2022–2026). I build data-driven and
+            AI-powered products – from influencer marketing SaaS and social
+            commerce platforms to SQL data warehouses, computer-vision and NLP
+            projects.
+          </p>
+
+          {/* ================= Download CV menu ================= */}
+          <div className="mt-8 flex justify-center md:justify-start">
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setShowCvMenu((prev) => !prev)}
+                className="px-8 py-3 rounded-full bg-purple-600 hover:bg-purple-700 transition text-white font-semibold shadow-lg shadow-purple-500/40"
+              >
+                Download CV
+              </button>
+
+              {showCvMenu && (
+                <div className="absolute left-0 mt-3 w-64 rounded-2xl bg-[#090920] border border-purple-500/60 shadow-xl z-20 p-2">
+                  <a
+                    href={RESUME_LINKS.softwareDev}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="block px-3 py-2 text-sm text-slate-100 rounded-xl hover:bg-purple-600/40"
+                  >
+                    Software Developer CV
+                  </a>
+                  <a
+                    href={RESUME_LINKS.dataAnalytics}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-1 block px-3 py-2 text-sm text-slate-100 rounded-xl hover:bg-purple-600/40"
+                  >
+                    Data / Analytics CV
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
-        {/* Right Side */}
-        <div className="md:w-1/2 flex justify-center md:justify-end">
-          <Tilt
-            className="w-48 h-48 sm:w-64 sm:h-64 md:w-[30rem] md:h-[30rem] border-4 border-purple-700 rounded-full"
-            tiltMaxAngleX={20}
-            tiltMaxAngleY={20}
-            perspective={1000}
-            scale={1.05}
-            transitionSpeed={1000}
-            gyroscope={true}
-          >
-            <img
-              src={profileImage}
-              alt="Tarun Kaushik"
-              className="w-full h-full rounded-full object-cover drop-shadow-[0_10px_20px_rgba(130,69,236,0.5)]"
-            />
+
+        {/* ================= Right image side ================= */}
+        <div className="w-full md:w-1/2 flex items-center justify-center">
+          <Tilt glareEnable={true} glareMaxOpacity={0.35} glareColor="#a855f7">
+            <div className="relative w-[260px] md:w-[320px] lg:w-[360px] aspect-square rounded-full bg-gradient-to-tr from-purple-700/40 via-transparent to-purple-900/80 border-4 border-purple-500 shadow-[0_0_80px_rgba(168,85,247,0.75)] flex items-center justify-center">
+              <div className="w-[82%] h-[82%] rounded-full overflow-hidden bg-[#05010d]">
+                <img
+                  src={profileImage}
+                  alt="Vivek Mane"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute inset-4 rounded-full border border-purple-400/40" />
+            </div>
           </Tilt>
         </div>
       </div>
