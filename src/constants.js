@@ -577,9 +577,11 @@ export const projects = [
 
 // ================== Resume Links ==================
 // ⬇️ Replace these 2 links with your real Google Drive / resume URLs
+// ================= Resume Links =================
 export const RESUME_LINKS = {
   softwareDev:
-    "https://drive.google.com/your-software-dev-cv-link-here",
+    "https://drive.google.com/file/d/1UQoMRTc1jbaAvRghCfJtthJG3XSuLzYW/view?usp=drive_link",
   dataAnalytics:
-    "https://drive.google.com/your-data-analytics-cv-link-here",
+    "https://drive.google.com/file/d/1eyALlHrzeeRXMabtdAwvxdWnl_9e4j93/view?usp=drive_link",
 };
+
